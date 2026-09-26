@@ -1,0 +1,949 @@
+ce-width, initial-scale=1.0">
+    <title>Ahmad Rizky Marpaung - Geophysics & Spatial Data Specialist</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            800: '#0f2347',
+                            900: '#0a1730',
+                            950: '#050c1b',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    backgroundImage: {
+                        'topo-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm28-65c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm23-11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-6 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm29 22c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%20b45309' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #0f2347; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-gold-500 selection:text-white font-sans relative">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300 glass-nav border-b border-slate-200/80 shadow-xs">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-xl bg-navy-900 text-gold-400 font-extrabold flex items-center justify-center text-lg shadow-md group-hover:bg-gold-500 group-hover:text-navy-950 transition-all duration-300">
+                        AR
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-extrabold text-navy-900 tracking-tight leading-tight group-hover:text-gold-600 transition-colors">
+                            Ahmad Rizky<span class="text-gold-500">.</span>
+                        </span>
+                        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Geophysics & Spatial</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-gold-600 transition-colors">Tentang Saya</a>
+                    <a href="#experience" class="text-sm font-semibold text-slate-600 hover:text-gold-600 transition-colors">Pengalaman & Proyek</a>
+                    <a href="#skills" class="text-sm font-semibold text-slate-600 hover:text-gold-600 transition-colors">Keahlian</a>
+                    <a href="#contact" class="px-5 py-2.5 text-sm font-semibold text-white bg-navy-900 hover:bg-navy-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 border border-navy-900">
+                        <i class="far fa-paper-plane text-xs text-gold-400"></i> Hubungi Saya
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="p-2.5 rounded-lg text-navy-900 hover:bg-slate-100 transition-colors focus:outline-none">
+                        <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl transition-all">
+            <a href="#about" class="mobile-link block text-base font-semibold text-slate-700 hover:text-gold-600 py-1">Tentang Saya</a>
+            <a href="#experience" class="mobile-link block text-base font-semibold text-slate-700 hover:text-gold-600 py-1">Pengalaman & Proyek</a>
+            <a href="#skills" class="mobile-link block text-base font-semibold text-slate-700 hover:text-gold-600 py-1">Keahlian & Tools</a>
+            <a href="#contact" class="mobile-link block text-center w-full py-3 text-base font-semibold text-white bg-navy-900 rounded-xl shadow-md">
+                Hubungi Saya
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden bg-topo-pattern flex items-center min-h-[92vh]">
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-navy-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Column -->
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-bold text-slate-700 tracking-wide uppercase">Open for Opportunities & Collaborations</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <p class="text-gold-600 font-bold tracking-wider uppercase text-sm sm:text-base">
+                            Fresh Graduate Teknik Geofisika UNJA
+                        </p>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-tight leading-tight">
+                            Ahmad Rizky <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-navy-900 via-navy-800 to-gold-600">
+                                Marpaung
+                            </span>
+                        </h1>
+                    </div>
+
+                    <p class="text-slate-600 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
+                        "Survey & Pemetaan, Mitigasi Risiko Berbasis Geofisika, Geospatial Data, dan Machine Learning."
+                    </p>
+
+                    <p class="text-slate-500 text-base leading-relaxed max-w-xl">
+                        Berpengalaman dalam pengolahan data geofisika (seismik, Geolistrik, gravity, Magnetik, HVSR), analisis spasial GIS (ArcGIS/QGIS), serta penerapan AI/Machine Learning dibidang Kebumian.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap items-center gap-4">
+                        <a href="#experience" class="px-7 py-3.5 bg-navy-900 text-white rounded-xl font-bold shadow-lg shadow-navy-900/25 hover:bg-navy-800 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
+                            <span>Lihat Portfolio</span>
+                            <i class="fas fa-arrow-right text-xs text-gold-400"></i>
+                        </a>
+                        
+                        <a href="https://linkedin.com/in/ahmadrizkymarpaung" target="_blank" class="px-6 py-3.5 bg-white text-navy-900 border border-slate-300 rounded-xl font-bold hover:border-gold-500 hover:text-gold-600 transition-all duration-300 flex items-center gap-2 shadow-xs">
+                            <i class="fab fa-linkedin text-lg text-blue-700"></i>
+                            <span>LinkedIn</span>
+                        </a>
+
+                        <button onclick="copyToClipboard('ahmadrizky1411@gmail.com', 'Email berhasil disalin!')" class="p-3.5 bg-white text-slate-700 border border-slate-300 rounded-xl hover:border-gold-500 hover:text-gold-600 transition-all duration-300 shadow-xs group" title="Salin Email">
+                            <i class="far fa-copy text-lg group-hover:scale-110 transition-transform"></i>
+                        </button>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 max-w-lg">
+                        <div>
+                            <p class="text-2xl font-extrabold text-navy-900">3.36</p>
+                            <p class="text-xs text-slate-500 font-semibold">IPK Lulusan UNJA</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-gold-600">24k+</p>
+                            <p class="text-xs text-slate-500 font-semibold">Titik Data Satelit GGMplus</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-navy-900">2x</p>
+                            <p class="text-xs text-slate-500 font-semibold">Hibah Riset PKM & PMW</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Image Column -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-navy-900 to-gold-500 rounded-3xl blur-xl opacity-20 transform -rotate-2"></div>
+
+                        <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 group">
+                            
+                            <!-- Foto 1: Pas Foto Profil -->
+                            <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-100">
+                                <img id="profile-img" 
+                                     src="pas-foto.jpeg" 
+                                     alt="Ahmad Rizky Marpaung" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x600/0a1730/fbbf24?text=Ahmad+Rizky+M';" 
+                                     class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent opacity-80"></div>
+                                
+                                <div class="absolute bottom-4 left-4 right-4 text-white">
+                                    <p class="text-xs font-semibold text-gold-400 tracking-wider uppercase">S1 Teknik Geofisika</p>
+                                    <p class="text-lg font-bold">Ahmad Rizky Marpaung</p>
+                                </div>
+                            </div>
+
+                            <div class="absolute -top-4 -left-4 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-navy-50 text-navy-900 flex items-center justify-center font-bold">
+                                    <i class="fas fa-satellite text-navy-900"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-navy-900">Ex-BMKG Pusat</p>
+                                    <p class="text-[10px] text-slate-500">Seismologi & Geofisika Potensial</p>
+                                </div>
+                            </div>
+
+                            <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gold-50 text-gold-600 flex items-center justify-center font-bold">
+                                    <i class="fas fa-user-shield text-gold-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-navy-900">Ketua HIMA 23/24</p>
+                                    <p class="text-[10px] text-slate-500">Teknik Geofisika UNJA</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-4 space-y-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-gold-600 font-bold uppercase text-xs tracking-wider mb-2">
+                            <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+                            Profil Ringkas
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">Tentang Saya</h2>
+                        <div class="w-16 h-1.5 bg-gold-500 rounded-full mt-3"></div>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div class="w-9 h-9 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold">Pendidikan</p>
+                                <p class="text-sm font-bold text-navy-900">S1 Teknik Geofisika UNJA</p>
+                                <p class="text-xs text-slate-500">IPK 3.36 / 4.00 (2020-2026)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div class="w-9 h-9 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold">Domisili</p>
+                                <p class="text-sm font-bold text-navy-900">Asahan, Sumatera Utara</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div class="w-9 h-9 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold">Email Kontak</p>
+                                <p class="text-sm font-bold text-navy-900">ahmadrizky1411@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div class="w-9 h-9 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold">Telepon / WA</p>
+                                <p class="text-sm font-bold text-navy-900">+62 823-7913-2468</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 space-y-6 text-slate-600 leading-relaxed text-base sm:text-lg">
+                    <p class="font-medium text-navy-900 text-xl leading-snug">
+                        Sebagai lulusan <span class="text-gold-600 font-bold">Teknik Geofisika Universitas Jambi</span>, saya memadukan kemampuan lapangan geofisika dengan analisis komputasi modern untuk memecahkan tantangan geosains & geoinformatika.
+                    </p>
+
+                    <p>
+                        Saya memiliki pengalaman praktis dalam akuisisi, pemrosesan, dan interpretasi data lapangan geofisika seperti <strong>Seismik, Geolistrik, Mikrotremor (HVSR), Ground Penetrating Radar (GPR), Gravity (Scintrex CG-5), serta Geomagnetik</strong>. Dalam lingkup analisis data, saya terbiasa mengekstraksi citra data satelit berskala besar (GGMplus) dan mengolahnya menggunakan software spesialis (Oasis Montaj, Surfer, MATLAB, ArcGIS/QGIS).
+                    </p>
+
+                    <p>
+                        Dalam riset tugas akhir, saya mengintegrasikan <strong>Algoritma Machine Learning K-Means</strong> menggunakan bahasa pemrograman Python untuk melakukan zonasi tingkat bahaya seismik di Pulau Sumatera berdasarkan pembersihan katalog data gempa USGS.
+                    </p>
+
+                    <p>
+                        Selain kapabilitas teknis, kepemimpinan saya teruji saat mengemban amanah sebagai <strong>Ketua Himpunan Mahasiswa Teknik Geofisika Antareja UNJA (2023–2024)</strong>, mengelola puluhan pengurus, merancang alokasi anggaran, dan menyelenggarakan seminar & workshop teknis nasional.
+                    </p>
+
+                    <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                            <h3 class="font-bold text-navy-900 flex items-center gap-2 mb-1">
+                                <i class="fas fa-layer-group text-gold-500"></i> Survei & Pemetaan Spasial
+                            </h3>
+                            <p class="text-xs text-slate-500">Pemetaan zonasi risiko bahaya gempa bumi, anomali gravity, kerapatan petir, & analisis GIS.</p>
+                        </div>
+                        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50">
+                            <h3 class="font-bold text-navy-900 flex items-center gap-2 mb-1">
+                                <i class="fas fa-brain text-gold-500"></i> AI & Geoinformatika
+                            </h3>
+                            <p class="text-xs text-slate-500">Penerapan Machine Learning (Python/K-Means) untuk clustering seismisitas & geofisika potensial.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience & Projects Section -->
+    <section id="experience" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 text-gold-600 font-bold uppercase text-xs tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+                    Rekam Jejak & Portofolio
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">Pengalaman & Proyek Riset</h2>
+                <p class="mt-3 text-slate-600 text-base">Rangkuman magang di instansi pemerintah, penelitian skripsi, kepemimpinan organisasi, dan hibah terdanai.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="filterExperience('all')" class="exp-filter-btn active px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-navy-900 text-white shadow-md">
+                    Semua Pengalaman
+                </button>
+                <button onclick="filterExperience('bmkg')" class="exp-filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    Magang BMKG
+                </button>
+                <button onclick="filterExperience('research')" class="exp-filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    Riset & Skripsi
+                </button>
+                <button onclick="filterExperience('leadership')" class="exp-filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    Kepemimpinan HIMA
+                </button>
+                <button onclick="filterExperience('grants')" class="exp-filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    Hibah PKM & PMW
+                </button>
+            </div>
+
+            <!-- Experience Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="experience-grid">
+                
+                <!-- Card 1: BMKG -->
+                <div class="exp-card bmkg bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gold-600 bg-gold-50 px-3 py-1 rounded-full border border-gold-200">Magang Nasional</span>
+                                <h3 class="text-xl font-bold text-navy-900 mt-2">Staff Magang Geofisika Potensial</h3>
+                                <p class="text-slate-500 font-medium text-sm">BMKG Pusat - Direktorat Seismologi Teknik & Geofisika Potensial</p>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap">Mei - Jun 2024</span>
+                        </div>
+
+                        <!-- Foto 2: Dokumentasi Magang BMKG -->
+                        <div class="my-4 relative overflow-hidden rounded-2xl border border-slate-200 group/img cursor-pointer" onclick="openModal('bmkg-modal')">
+                            <img src="magang-bmkg.jpeg" 
+                                 alt="Dokumentasi Magang BMKG Pusat" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x500/0a1730/fbbf24?text=Dokumentasi+Magang+BMKG+Pusat';" 
+                                 class="w-full h-48 object-cover object-center transition-transform duration-500 group-hover/img:scale-105" />
+                            <div class="absolute inset-0 bg-navy-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-xs">
+                                <i class="fas fa-search-plus text-base"></i> Lihat Foto Dokumentasi
+                            </div>
+                        </div>
+
+                        <ul class="text-slate-600 space-y-2.5 text-sm my-4 list-disc list-inside leading-relaxed">
+                            <li><strong>Metode Gravity:</strong> Ekstraksi & pengolahan data gayaberat satelit GGMplus (24.026 titik) menggunakan MATLAB, Oasis Montaj, & Surfer. Mengaplikasikan koreksi Bouguer & Terrain (densitas Parasnis $2.978\text{ g/cm}^3$) serta analisis spektrum RAPS untuk sebaran anomali intrusi air laut DKI Jakarta.</li>
+                            <li><strong>Metode Geomagnetik:</strong> Pengolahan & perekapan 110 data perekaman magnetik harian (Stasiun Tuntungan) menggunakan software XMAGPY.</li>
+                            <li><strong>Lightning Detector:</strong> Memetakan sebaran kerapatan petir bulanan (CG+, CG-, IC) Pulau Jawa & Sumatera menggunakan ArcGIS.</li>
+                            <li><strong>Precursor Gempa Bumi:</strong> Monitoring harian anomali magnet bumi untuk prekursor indikator gempa bumi ($M \ge 5.5$) wilayah Bali & Nusa Tenggara.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">MATLAB</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">Oasis Montaj</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">ArcGIS</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">XMAGPY</span>
+                        </div>
+                        <button onclick="openModal('bmkg-modal')" class="text-xs font-bold text-gold-600 hover:text-navy-900 flex items-center gap-1 transition-colors">
+                            <span>Detail Ringkasan</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Skripsi Riset -->
+                <div class="exp-card research bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-navy-800 bg-navy-50 px-3 py-1 rounded-full border border-navy-100">Riset Skripsi S1</span>
+                                <h3 class="text-xl font-bold text-navy-900 mt-2">Peneliti Utama & Penulis Skripsi</h3>
+                                <p class="text-slate-500 font-medium text-sm">Program Studi Teknik Geofisika Universitas Jambi</p>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap">2024</span>
+                        </div>
+
+                        <p class="text-sm font-semibold text-navy-900 italic bg-amber-50 p-3 rounded-xl border border-amber-200 mb-4">
+                            "Zonasi Aktivitas Seismik Menggunakan Algoritma K-Means di Pulau Sumatra"
+                        </p>
+
+                        <ul class="text-slate-600 space-y-2.5 text-sm mb-6 list-disc list-inside leading-relaxed">
+                            <li>Melakukan pengunduhan, ekstraksi, pembersihan data (data cleaning), dan verifikasi katalog gempa bumi bersumber dari USGS.</li>
+                            <li>Pengembangan skrip Python independen untuk mengimplementasikan Machine Learning K-Means Clustering dalam mengelompokkan kerentanan seismisitas.</li>
+                            <li>Menghasilkan peta zonasi tingkat kerentanan gempa bumi resolusi tinggi berbasis sistem informasi geografis (GIS) untuk rujukan mitigasi bencana.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">Python</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">K-Means ML</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">GIS Mapping</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">USGS Catalog</span>
+                        </div>
+                        <button onclick="openModal('skripsi-modal')" class="text-xs font-bold text-gold-600 hover:text-navy-900 flex items-center gap-1 transition-colors">
+                            <span>Abstrak Riset</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Leadership HIMA -->
+                <div class="exp-card leadership bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Kepemimpinan</span>
+                                <h3 class="text-xl font-bold text-navy-900 mt-2">Ketua Himpunan Mahasiswa</h3>
+                                <p class="text-slate-500 font-medium text-sm">HIMA Teknik Geofisika Antareja Universitas Jambi</p>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap">2023 - 2024</span>
+                        </div>
+
+                        <!-- Foto 3: Poster Ketua HIMA -->
+                        <div class="my-4 relative overflow-hidden rounded-2xl border border-slate-200 group/img cursor-pointer" onclick="openModal('hima-modal')">
+                            <img src="ketua-hima.jpeg" 
+                                 alt="Ketua HMTGF Antareja - Ahmad Rizky Marpaung" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x600/0a1730/fbbf24?text=Dokumentasi+Ketua+HMTGF+2023/2024';" 
+                                 class="w-full h-52 object-cover object-top transition-transform duration-500 group-hover/img:scale-105" />
+                            <div class="absolute inset-0 bg-navy-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-xs">
+                                <i class="fas fa-search-plus text-base"></i> Lihat Poster Lengkap
+                            </div>
+                        </div>
+
+                        <ul class="text-slate-600 space-y-2.5 text-sm my-4 list-disc list-inside leading-relaxed">
+                            <li>Memimpin & memfasilitasi koordinasi seluruh divisi strategis organisasi serta puluhan pengurus mahasiswa aktif (Kabinet Mahitala 2023/2024).</li>
+                            <li>Menjadi mediator & penghubung utama antara mahasiswa, jurusan/fakultas, alumni, dan instansi profesional luar.</li>
+                            <li>Mengelola alokasi anggaran operasional & program kerja secara transparan, akuntabel, dan tepat guna.</li>
+                            <li>Menyelenggarakan lomba dan seminar nasional serta workshop teknis pengolahan data geofisika (>100 peserta).</li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">Strategic Planning</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">Event Management</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">Public Speaking</span>
+                        </div>
+                        <button onclick="openModal('hima-modal')" class="text-xs font-bold text-gold-600 hover:text-navy-900 flex items-center gap-1 transition-colors">
+                            <span>Lihat Poster HIMA</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Grants PKM & PMW -->
+                <div class="exp-card grants bg-white p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">Hibah Nasional & Kampus</span>
+                                <h3 class="text-xl font-bold text-navy-900 mt-2">Penerima Pendanaan PKM & PMW</h3>
+                                <p class="text-slate-500 font-medium text-sm">Kemendikbudristek & Universitas Jambi</p>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap">2022 - 2024</span>
+                        </div>
+
+                        <!-- Grid 2 Foto Dokumentasi PKM & PMW -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                            <!-- Foto 4: Akuisisi Data PKM -->
+                            <div class="relative overflow-hidden rounded-2xl border border-slate-200 group/img cursor-pointer bg-slate-100" onclick="openModal('pkm-modal')">
+                                <img src="pkm-akuisisi.jpeg" 
+                                     alt="Pengambilan Data Lapangan PKM Mikrotremor" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x450/0a1730/fbbf24?text=Foto+Pengambilan+Data+PKM';" 
+                                     class="w-full h-36 object-cover transition-transform duration-500 group-hover/img:scale-105" />
+                                <div class="absolute inset-0 bg-navy-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white font-bold text-xs gap-1">
+                                    <i class="fas fa-search-plus"></i> Dokumentasi PKM
+                                </div>
+                                <div class="absolute bottom-2 left-2 bg-navy-900/80 text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                                    Akuisisi Data PKM
+                                </div>
+                            </div>
+
+                            <!-- Foto 5: Produk/Kegiatan PMW -->
+                            <div class="relative overflow-hidden rounded-2xl border border-slate-200 group/img cursor-pointer bg-slate-100" onclick="openModal('pmw-modal')">
+                                <img src="pmw-yogurt.jpeg" 
+                                     alt="Dokumentasi PMW Coconut Yogurt" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x450/0a1730/fbbf24?text=Foto+Wirausaha+PMW';" 
+                                     class="w-full h-36 object-cover transition-transform duration-500 group-hover/img:scale-105" />
+                                <div class="absolute inset-0 bg-navy-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white font-bold text-xs gap-1">
+                                    <i class="fas fa-search-plus"></i> Dokumentasi PMW
+                                </div>
+                                <div class="absolute bottom-2 left-2 bg-navy-900/80 text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                                    Wirausaha PMW
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 my-4">
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <p class="text-xs font-bold text-navy-900">PKM Riset Mikrotremor (Rp 7.000.000) - 2023/2024</p>
+                                <p class="text-xs text-slate-600 mt-1">Lolos pendanaan hibah kompetitif Kemenristekdikti terkait akuisisi & analisis karakteristik serta amplifikasi tanah metode HVSR/Mikrotremor di Kota Sungai Penuh untuk mitigasi bencana.</p>
+                            </div>
+
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <p class="text-xs font-bold text-navy-900">PMW Wirausaha 'Coconut Yogurt' (Rp 6.000.000) - 2022</p>
+                                <p class="text-xs text-slate-600 mt-1">Ketua tim penerima hibah wirausaha olahan pangan kelapa lokal. Mengelola alokasi modal, strategi pemasaran produk, dan laporan keuangan pertanggungjawaban.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">HVSR / Mikrotremor</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-navy-900 text-[11px] font-bold rounded-lg">Financial Management</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="openModal('pkm-modal')" class="text-xs font-bold text-gold-600 hover:text-navy-900 flex items-center gap-1 transition-colors">
+                                <span>Detail PKM</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                            <span class="text-slate-300">|</span>
+                            <button onclick="openModal('pmw-modal')" class="text-xs font-bold text-gold-600 hover:text-navy-900 flex items-center gap-1 transition-colors">
+                                <span>Detail PMW</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 text-gold-600 font-bold uppercase text-xs tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+                    Kompetensi Teknis
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">Keahlian & Perangkat Lunak</h2>
+                <p class="mt-3 text-slate-600 text-base">Kombinasi metode pemrosesan geofisika, geoinformatika, hingga keahlian manajerial.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-gold-400 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl mb-6 shadow-md">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">Metode Geofisika & Instrumentasi</h3>
+                    <p class="text-xs text-slate-500 mb-6">Pengalaman akuisisi & pengolahan data geofisika eksplorasi dan mitigasi bencana.</p>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Gayaberat / Gravity (Scintrex CG-5)</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Geomagnetik (Tuntungan Stn)</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Mikrotremor / HVSR</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Seismik Refraksi / Refleksi</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Geolistrik Resistivitas</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Ground Penetrating Radar (GPR)</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-gold-400 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl mb-6 shadow-md">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">GIS, Software & Data Science</h3>
+                    <p class="text-xs text-slate-500 mb-6">Perangkat lunak komputasi spasial, ekstraksi satelit, dan pemrograman AI.</p>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">ArcGIS & QGIS</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Python (Data Analysis)</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">K-Means Clustering</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Oasis Montaj</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">MATLAB</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Surfer & XMAGPY</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">GGMplus Satellite Data</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:border-gold-400 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl mb-6 shadow-md">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-4">Soft Skills & Leadership</h3>
+                    <p class="text-xs text-slate-500 mb-6">Keahlian non-teknis pendukung kolaborasi tim dan eksekusi program kerja.</p>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Leadership & Team Mgmt</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Public Speaking</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Project & Event Planning</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Strategic Problem Solving</span>
+                        <span class="px-3.5 py-2 bg-white text-navy-900 border border-slate-200 text-xs font-bold rounded-xl shadow-2xs">Entrepreneurship</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-navy-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-gold-400 font-bold uppercase text-xs tracking-wider">Mari Berkolaborasi</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">Hubungi Saya</h2>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        Saya selalu terbuka untuk berdiskusi mengenai peluang karir di industri pertambangan, eksplorasi geofisika, geoinformatika, maupun proyek analisis data spasial.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <button onclick="copyToClipboard('ahmadrizky1411@gmail.com', 'Alamat email berhasil disalin!')" class="w-full p-4 rounded-2xl bg-navy-800 hover:bg-navy-800/80 border border-slate-700/80 flex items-center justify-between text-left transition-all duration-300 group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-medium">Kirim Email Direct</p>
+                                    <p class="text-sm font-bold text-white group-hover:text-gold-400 transition-colors">ahmadrizky1411@gmail.com</p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-navy-950 px-3 py-1.5 rounded-lg text-slate-300 font-semibold group-hover:bg-gold-500 group-hover:text-navy-950 transition-colors">Salin</span>
+                        </button>
+
+                        <a href="https://wa.me/6282379132468" target="_blank" class="w-full p-4 rounded-2xl bg-navy-800 hover:bg-navy-800/80 border border-slate-700/80 flex items-center justify-between text-left transition-all duration-300 group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-medium">WhatsApp / Telepon</p>
+                                    <p class="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">+62 823-7913-2468</p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-navy-950 px-3 py-1.5 rounded-lg text-slate-300 font-semibold group-hover:bg-emerald-500 group-hover:text-navy-950 transition-colors">Chat</span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/ahmadrizkymarpaung" target="_blank" class="w-full p-4 rounded-2xl bg-navy-800 hover:bg-navy-800/80 border border-slate-700/80 flex items-center justify-between text-left transition-all duration-300 group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl shrink-0">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-medium">Profil LinkedIn</p>
+                                    <p class="text-sm font-bold text-white group-hover:text-blue-400 transition-colors">linkedin.com/in/ahmadrizkymarpaung</p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-navy-950 px-3 py-1.5 rounded-lg text-slate-300 font-semibold group-hover:bg-blue-500 group-hover:text-white transition-colors">Kunjungi</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="bg-navy-800/90 p-8 sm:p-10 rounded-3xl border border-slate-700/80 space-y-5 shadow-2xl backdrop-blur-md">
+                        <h3 class="text-xl font-bold text-white mb-2">Tinggalkan Pesan Langsung</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Nama Lengkap</label>
+                                <input type="text" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Alamat Email</label>
+                                <input type="email" required placeholder="nama@perusahaan.com" class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-2">Subjek Pesan</label>
+                            <input type="text" required placeholder="Tawaran Kerja / Diskusi Proyek" class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-2">Isi Pesan</label>
+                            <textarea rows="4" required placeholder="Tuliskan pesan atau penawaran Anda di sini..." class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-gold-500 transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-950 font-bold rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="far fa-paper-plane"></i>
+                            <span>Kirim Pesan</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <div>
+                <p class="text-sm text-slate-300 font-semibold">&copy; 2026 Ahmad Rizky Marpaung. All Rights Reserved.</p>
+                <p class="text-xs text-slate-500 mt-1">Teknik Geofisika Universitas Jambi • Geophysics & Spatial Data Specialist</p>
+            </div>
+            
+            <a href="#home" class="p-3 bg-navy-800 text-gold-400 rounded-xl hover:bg-gold-500 hover:text-navy-950 transition-all duration-300" title="Kembali ke atas">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Modals for Projects & Image Documentation -->
+    
+    <!-- 1. BMKG Modal (Dokumentasi Magang) -->
+    <div id="bmkg-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('bmkg-modal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl font-bold">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="inline-block px-3 py-1 bg-gold-50 text-gold-600 text-xs font-bold rounded-full">Magang BMKG Pusat</div>
+            <h3 class="text-2xl font-bold text-navy-900">Ringkasan & Dokumentasi Magang BMKG</h3>
+            
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 max-h-[50vh]">
+                <img src="magang-bmkg.jpeg" 
+                     alt="Dokumentasi Magang BMKG Pusat" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x500/0a1730/fbbf24?text=Foto+Dokumentasi+Magang+BMKG+Pusat';" 
+                     class="w-full h-auto object-contain max-h-[48vh] mx-auto" />
+            </div>
+
+            <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+                <p><strong>1. Metodologi Gayaberat (Gravity):</strong> Melakukan pengolahan 24.026 titik data gayaberat citra satelit GGMplus. Menerapkan koreksi Bouguer & Terrain dengan estimasi densitas Parasnis ($2.978\text{ g/cm}^3$) serta analisis spektrum Radially Averaged Power Spectrum (RAPS) untuk memisahkan anomali regional dan residual guna pemetaan batas intrusi air laut DKI Jakarta.</p>
+                <p><strong>2. Geomagnetik:</strong> Mengolah data variasi harian komponen deklinasi & inklinasi dari Stasiun Geomagnetik Tuntungan Deli Serdang (110 rekaman) menggunakan XMAGPY.</p>
+                <p><strong>3. Precursor Gempa:</strong> Pemantauan dan interpretasi anomali medan magnetik bumi harian sebagai parameter indikator potensi gempa bumi di Bali & Nusa Tenggara.</p>
+            </div>
+            <button onclick="closeModal('bmkg-modal')" class="w-full py-3 bg-navy-900 text-white rounded-xl font-bold text-sm">Tutup Modal</button>
+        </div>
+    </div>
+
+    <!-- 2. Skripsi Modal -->
+    <div id="skripsi-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('skripsi-modal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl font-bold">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="inline-block px-3 py-1 bg-navy-50 text-navy-900 text-xs font-bold rounded-full">Abstrak Penelitian Skripsi</div>
+            <h3 class="text-2xl font-bold text-navy-900">Zonasi Aktivitas Seismik Menggunakan Algoritma K-Means di Pulau Sumatra</h3>
+            <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+                <p>Penelitian ini berfokus pada analisis zonasi kerentanan gempa bumi di wilayah Pulau Sumatera berbasis algoritma Machine Learning unsupervised K-Means Clustering.</p>
+                <p>Katalog data histori gempa bumi diperoleh dari USGS, kemudian dibersihkan dan diproses menggunakan skrip Python untuk mengelompokkan wilayah berdasarkan kedalaman, magnitudo, dan frekuensi seismisitas. Hasil pemodelan diintegrasikan ke dalam Sistem Informasi Geografis (GIS) untuk menghasilkan peta zonasi tingkat kerentanan bahaya gempa bumi resolusi tinggi bagi upaya tata ruang mitigasi bencana.</p>
+            </div>
+            <button onclick="closeModal('skripsi-modal')" class="w-full py-3 bg-navy-900 text-white rounded-xl font-bold text-sm">Tutup Modal</button>
+        </div>
+    </div>
+
+    <!-- 3. HIMA Modal (Poster Ketua HIMA) -->
+    <div id="hima-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 space-y-5 relative shadow-2xl max-h-[90vh] overflow-y-auto text-center">
+            <button onclick="closeModal('hima-modal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl font-bold">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full">Dokumentasi Kepemimpinan</div>
+            <h3 class="text-2xl font-bold text-navy-900">Ketua HMTGF UNJA 2023/2024</h3>
+            <p class="text-xs text-slate-500">Kabinet Mahitala • Himpunan Mahasiswa Teknik Geofisika Universitas Jambi</p>
+            
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 max-h-[60vh] flex items-center justify-center">
+                <img src="ketua-hima.jpeg" 
+                     alt="Poster Ketua HMTGF Ahmad Rizky Marpaung" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x1000/0a1730/fbbf24?text=Poster+Ketua+HMTGF+2023/2024';" 
+                     class="w-full h-auto object-contain max-h-[58vh]" />
+            </div>
+
+            <button onclick="closeModal('hima-modal')" class="w-full py-3 bg-navy-900 text-white rounded-xl font-bold text-sm">Tutup Modal</button>
+        </div>
+    </div>
+
+    <!-- 4. PKM Modal (Pengambilan Data Mikrotremor) -->
+    <div id="pkm-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('pkm-modal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl font-bold">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-full">Dokumentasi Hibah PKM Riset</div>
+            <h3 class="text-2xl font-bold text-navy-900">Akuisisi Data Lapangan Mikrotremor (HVSR)</h3>
+            <p class="text-xs text-slate-500">Kota Sungai Penuh, Jambi • Pendanaan Kemendikbudristek (Rp 7.000.000)</p>
+
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 max-h-[50vh]">
+                <img src="pkm-akuisisi.jpeg" 
+                     alt="Pengambilan Data Mikrotremor PKM" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x500/0a1730/fbbf24?text=Foto+Pengambilan+Data+Mikrotremor+PKM';" 
+                     class="w-full h-auto object-contain max-h-[48vh] mx-auto" />
+            </div>
+
+            <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+                <p>Kegiatan survei pengambilan data mikrotremor lapangan menggunakan instrumen seismometer di Kota Sungai Penuh. Pengukuran dilakukan untuk menganalisis frekuensi dominan, faktor amplifikasi tanah, serta indeks kerentanan seismik tanah daerah setempat berbasis pengolahan HVSR (Horizontal-to-Vertical Spectral Ratio).</p>
+            </div>
+            <button onclick="closeModal('pkm-modal')" class="w-full py-3 bg-navy-900 text-white rounded-xl font-bold text-sm">Tutup Modal</button>
+        </div>
+    </div>
+
+    <!-- 5. PMW Modal (Wirausaha Coconut Yogurt) -->
+    <div id="pmw-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('pmw-modal')" class="absolute top-5 right-5 text-slate-400 hover:text-navy-900 text-xl font-bold">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-full">Dokumentasi Program Mahasiswa Wirausaha</div>
+            <h3 class="text-2xl font-bold text-navy-900">Inovasi Wirausaha 'Coconut Yogurt'</h3>
+            <p class="text-xs text-slate-500">Hibah PMW Universitas Jambi • Pendanaan Rp 6.000.000</p>
+
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 max-h-[50vh]">
+                <img src="pmw-yogurt.jpeg" 
+                     alt="Dokumentasi PMW Coconut Yogurt" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x500/0a1730/fbbf24?text=Foto+Dokumentasi+PMW+Coconut+Yogurt';" 
+                     class="w-full h-auto object-contain max-h-[48vh] mx-auto" />
+            </div>
+
+            <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+                <p>Dokumentasi produk dan kegiatan Program Mahasiswa Wirausaha (PMW). Sebagai ketua tim, mengelola pengembangan produk pangan inovasi olahan kelapa lokal, merancang kemasan, manajemen pemasaran digital, dan pelaporan keuangan operasional usaha.</p>
+            </div>
+            <button onclick="closeModal('pmw-modal')" class="w-full py-3 bg-navy-900 text-white rounded-xl font-bold text-sm">Tutup Modal</button>
+        </div>
+    </div>
+
+    <!-- Embedded Interactive Script -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')){
+                menuIcon.className = 'fas fa-bars text-xl';
+            } else {
+                menuIcon.className = 'fas fa-times text-xl';
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fas fa-bars text-xl';
+            });
+        });
+
+        // Experience Filter Logic
+        function filterExperience(category) {
+            const cards = document.querySelectorAll('.exp-card');
+            const btns = document.querySelectorAll('.exp-filter-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('active', 'bg-navy-900', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+            });
+
+            event.currentTarget.classList.remove('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+            event.currentTarget.classList.add('active', 'bg-navy-900', 'text-white', 'shadow-md');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Handlers
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Copy to Clipboard
+        function copyToClipboard(text, message) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast(message || 'Teks berhasil disalin!');
+            } catch (err) {
+                showToast('Gagal menyalin teks');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Toast Notification System
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-navy-950 text-white border border-gold-500/50 px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold flex items-center gap-3 transition-all duration-300 pointer-events-auto transform translate-y-2 opacity-0';
+            toast.innerHTML = `<i class="fas fa-check-circle text-gold-400"></i> <span>${msg}</span>`;
+            
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Handle Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Terima kasih! Pesan Anda telah terkirim.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
